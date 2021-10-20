@@ -1,8 +1,10 @@
-#!/usr/bin/bash
-while true
-do
-  f=$(find ./custom_tmp -maxdepth 1 -type f | wc -l)
-  d=$(find ./custom_tmp -maxdepth 1 -type d | wc -l)
-  printf "Contents of custom_tmp: %d files, %d folders\n" $f $(($d-1))
-  sleep 10s
-done
+#!/bin/bash
+cd ~
+echo "time: $(date)" > info.txt 
+echo "username:" $USER >> info.txt
+echo "os:" $OSTYPE >> info.txt
+echo "home directory: $(pwd)" >>  info.txt
+echo "files: $(ls -R | wc -l)" >>   info.txt
+#ls -R | wc -l | tee -a info.txt
+echo "folders: $(ls -la | grep "^d" | wc -l)" >> info.txt
+#ls -la | grep "^d" | wc -l | tee -a  info.txt
